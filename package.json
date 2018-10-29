@@ -1,0 +1,22 @@
+{
+  "name": "amadealz",
+  "version": "1.0.0",
+  "description": "Market data analyzer for Amazon.com.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "amazon",
+    "scraper",
+    "market",
+    "data",
+    "database"
+  ],
+  "author": "Nicholas Ballard",
+  "license": "ISC",
+  "dependencies": {
+    "apac": "^3.0.2",
+    "xml2js": "^0.4.19"
+  }
+}
