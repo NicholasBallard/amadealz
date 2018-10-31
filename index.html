@@ -4,33 +4,93 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amadealz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Amadealz</title>
     <style>
         :root {
             --page-padding: 0 20px 0 20px;
             --page-margin: 10px;
         }
 
+        body {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 5px;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .theNavbar {
+            align-items: center;
+            background-color: mistyrose;
+            border-radius: 10px 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap-reverse;
+            justify-content: space-between;
+            margin: 0 5px 15px 5px;
+            padding: 0 15px 0 15px;
+        }
+
         .siteTitle>h1 {
             font-family: Lemon;
             font-size: 40px;
             font-weight: 900;
-            margin: 15px 30px 30px 10px;
-            line-height: 1.6;
-            padding: var(--page-padding);
+            line-height: .6;
+        }
+
+        .hamburgerMenu div {
+            background-color: black;
+            border-radius: 4px;
+            height: 6px;
+            margin: 4px 0;
+            width: 35px;
+        }
+
+        .hamburgerMenu:hover {
+            cursor: pointer;
+            transform: scale(1.2, 1.2);
+        }
+
+        #theMenu {
+            background-color: SeaShell;
+            height: 100vh;
+            overflow: scroll;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transform: translate3d(200vw, 0, 0);
+            transition: transform .3s cubic-bezier(0, .52, 0, 1);
+            width: 100vw;
+            z-index: 1000;
+        }
+
+        #theMenu.show {
+            transform: translate3d(20vw, 0, 0);
+        }
+
+        #theMenu h2 a {
+            color: SlateGray;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        #theMenu h2 a:hover {
+            text-decoration: underline;
         }
 
         .container {
-            width: 650px;
+            /*   align-items: center; */
+            background-color: lemonchiffon;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            /*   align-items: center; */
-            background-color: lemonchiffon;
-            padding: 10px 5px 10px 10px;
-            margin: 10px;
+            margin: 5px;
+            padding: 10px;
         }
 
         .side {
@@ -38,41 +98,40 @@
         }
 
         .theImage {
-            width: 100px;
-            height: 100px;
             background: gold;
+            height: 100px;
             margin: 5px 10px 5px 0px;
+            width: 100px;
         }
 
         .main {
-            flex: 70%;
+            /* flex: 70%; */
         }
 
         .theTitle {
-            width: 475px;
-            height: 30px;
             background: grey;
+            height: 30px;
             margin: 3px 2px 10px 0px;
+            width: 50%;
         }
 
         .theBlurb p {
+            background-color: gainsboro;
             display: inline;
             font-size: 18px;
-            background-color: gainsboro;
+            line-height: 1.4;
             margin: 3px 2px 2px 0px;
             padding: 0px;
             word-wrap: normal;
-            line-height: 1.4;
         }
 
         .theBlurb p::after {
             content: "I pledge allegiance to the flag, of the United States of America. And to the republic, for which it stands, one nation, under God, indivisible, with liberty and justice for all.";
         }
 
-        @media screen and (max-width: 600px) {
+        /* @media screen and (max-width: 600px) {
             .container {
                 flex-direction: column;
-                width: 98%;
             }
         }
 
@@ -80,14 +139,82 @@
             .theTitle {
                 width: 95%;
             }
+        } */
+
+        #star-icon {
+            margin: 50px 0;
+            position: relative;
+            display: block;
+            color: red;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid red;
+            border-left: 100px solid transparent;
+            transform: rotate(35deg);
         }
+
+        #star-icon:before {
+            border-bottom: 80px solid red;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -45px;
+            left: -65px;
+            display: block;
+            content: '';
+            transform: rotate(-35deg);
+        }
+
+        #star-icon:after {
+            position: absolute;
+            display: block;
+            color: red;
+            top: 3px;
+            left: -105px;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid red;
+            border-left: 100px solid transparent;
+            transform: rotate(-70deg);
+            content: '';
+        }
+
+        #category-icon {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #category-icon>div>div {
+            background-color: DarkOrange;
+            width: 10px;
+            height: 10px;
+            margin: 4px 4px 4px 0;
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="siteTitle">
-        <h1>Amadealz</h1>
+    <div class="theNavbar">
+        <div class="siteTitle">
+            <h1>Amadealz</h1>
+        </div>
+        <div class="hamburgerMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="theMenu">
+        <h2><a href="#">Today's Deals</a></h2>
+        <h2><a href="#">Expiring Soon</a></h2>
+        <h2><a href="#">My Account</a></h2>
     </div>
 
     <div class="container">
@@ -125,7 +252,49 @@
             </div>
         </div>
     </div>
+
+    <div id="star-icon"></div>
+
+    <!--   <div id="category-icon">
+          <div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div> -->
+
 
 </body>
+
+<footer>
+    <script>
+        var hamburgerButton = document.querySelector(".hamburgerMenu");
+        hamburgerButton.addEventListener("click", showMenu, true);
+
+        var theMenu = document.querySelector("#theMenu");
+        theMenu.addEventListener("click", hideMenu, false);
+
+        function showMenu(e) {
+            theMenu.classList.add("show");
+            document.body.style.overflow = "hidden";
+        }
+
+        function hideMenu(e) {
+            theMenu.classList.remove("show");
+            e.stopPropagation();
+            document.body.style.overflow = "auto";
+        }
+    </script>
+</footer>
 
 </html>
