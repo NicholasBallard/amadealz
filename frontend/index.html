@@ -20,13 +20,10 @@
             -webkit-box-sizing: border-box;
         }
 
-        html {
-            overflow-x: hidden;
-        }
-
         body {
             font-family: Helvetica, Arial, sans-serif;
             margin: 5px;
+            overflow-x: hidden;
             width: 100%;
         }
 
@@ -201,119 +198,84 @@
             margin: 4px 4px 4px 0;
         }
 
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: lightgray;
-            text-align: left;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer p {
-            padding: 2vh 1vw;
-            background-color: lemonchiffon;
-            text-align: center;
-            flex-grow: 1;
-            margin: 10px;
-        }
-
-        /* .footer .container {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin: 5px 2vw 5px 1vw;
-            padding: 10px;
-        } */
-
     </style>
 </head>
 
 <body>
-    <div class="content">
 
-        <div class="theNavbar">
-            <div class="siteTitle">
-                <h1>Amadealz</h1>
-            </div>
-            <div class="hamburgerMenu">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+    <div class="theNavbar">
+        <div class="siteTitle">
+            <h1>Amadealz</h1>
         </div>
-
-        <div id="theMenu">
-            <h2><a href="#">Today's Deals</a></h2>
-            <h2><a href="#">Expiring Soon</a></h2>
-            <h2><a href="#">My Account</a></h2>
+        <div class="hamburgerMenu">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+    <div id="theMenu">
+        <h2><a href="#">Today's Deals</a></h2>
+        <h2><a href="#">Expiring Soon</a></h2>
+        <h2><a href="#">My Account</a></h2>
+    </div>
+
+    <div class="container">
+        <div class="side">
+            <div class="theImage"></div>
         </div>
-
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
+        <div class="main">
+            <div class="theTitle"></div>
+            <div class="theBlurb">
+                <p></p>
             </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="side">
+            <div class="theImage"></div>
+        </div>
+        <div class="main">
+            <div class="theTitle"></div>
+            <div class="theBlurb">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="side">
+            <div class="theImage"></div>
+        </div>
+        <div class="main">
+            <div class="theTitle"></div>
+            <div class="theBlurb">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="star-icon"></div>
 
     <!--   <div id="category-icon">
-        <div>
+          <div>
             <div></div>
             <div></div>
             <div></div>
-        </div>
-        <div>
+          </div>
+          <div>
             <div></div>
             <div></div>
             <div></div>
-        </div>
-        <div>
+          </div>
+          <div>
             <div></div>
             <div></div>
             <div></div>
-        </div>
-    </div> -->
+          </div>
+        </div> -->
 
-    <div class="footer">
-        <p>Another thing.</p>
-        <p>Another thing.</p>
-        <p>Another thing.</p>
-    </div>
 
 </body>
 
@@ -335,12 +297,6 @@
             e.stopPropagation();
             document.body.style.overflow = "auto";
         }
-
-        var footerHeight = document.querySelector(".footer").offsetHeight;
-
-        var mainContent = document.querySelector(".content");
-        mainContent.style.marginBottom = footerHeight + 10 + "px";
-
     </script>
 </footer>
 
