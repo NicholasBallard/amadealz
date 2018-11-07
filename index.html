@@ -48,7 +48,7 @@
         }
 
         .theNavbar.scrolled {
-            width: 7vw;
+            width: 0px; // calculated in JavaScript
         }
 
         .theNavbar.scrolled .siteTitle>h1 {
@@ -61,7 +61,7 @@
             align-items: center;
             flex-wrap: wrap-reverse;
             justify-content: space-between;
-            width: 90vw;
+            max-width: 90vw;
             margin-left: 5px;
         }
 
@@ -79,7 +79,7 @@
 
         .hamburgerMenu {
             position: fixed;
-            right: 4vw;
+            right: 50px;
         }
 
         .hamburgerMenu div {
@@ -171,18 +171,6 @@
         .theBlurb p::after {
             content: "I pledge allegiance to the flag, of the United States of America. And to the republic, for which it stands, one nation, under God, indivisible, with liberty and justice for all.";
         }
-
-        /* @media screen and (max-width: 600px) {
-            .container {
-                flex-direction: column;
-            }
-        }
-
-        @media screen and (max-width: 475px) {
-            .theTitle {
-                width: 95%;
-            }
-        } */
 
         #star-icon {
             margin: 50px 0;
@@ -427,8 +415,12 @@
         function addScrolledClass() {
             if (window.pageYOffset > navHeight) {
                 nav.classList.add("scrolled");
+                // change scrolled width
+                nav.style.width = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth/2) + "px";
             } else {
                 nav.classList.remove("scrolled");
+                // revert to old navbar width
+                nav.style.width = null;
             }
         }
 
