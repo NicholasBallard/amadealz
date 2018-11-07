@@ -13,8 +13,8 @@
         :root {
             --page-padding: 0 20px 0 20px;
             --page-margin: 10px;
-            --primary-color: rgb(243,168,71);
-            --accent-color: rgb(35,47,62);
+            --primary-color: rgb(243, 168, 71);
+            --accent-color: rgb(35, 47, 62);
         }
 
         * {
@@ -36,13 +36,24 @@
         .theNavbar {
             background-color: var(--primary-color);
             border-radius: 10px 50px;
+            color: black;
             margin: 0 2vw 15px 1vw;
+            mix-blend-mode: multiply;
             padding: 0 1vw 0 1vw;
-            width: 95vw;
             position: fixed;
             top: 10px;
-            color: black;
-            mix-blend-mode: multiply;
+            right: 0;
+            width: 95vw;
+            transition: width .8s cubic-bezier(0.23, 1, 0.320, 1) .1s;
+        }
+
+        .theNavbar.scrolled {
+            width: 7vw;
+        }
+
+        .theNavbar.scrolled .siteTitle>h1 {
+            color: transparent;
+            text-shadow: none;
         }
 
         .theNavContent {
@@ -60,13 +71,15 @@
             font-weight: 900;
             line-height: .5;
             color: white;
-            /* background-color: white; */
             padding: 5px;
             border-radius: 1vw;
+            text-shadow: 1px 1px 1px grey;
+            transition: color .2s ease-in .25s, text-shadow .2s ease-in .25s;
         }
 
-        .sticky {
+        .hamburgerMenu {
             position: fixed;
+            right: 4vw;
         }
 
         .hamburgerMenu div {
@@ -86,7 +99,7 @@
 
         #theMenu {
             /* background-color: rgb(191,212,216); */
-            background-color: rgb(234,237,237);
+            background-color: rgb(234, 237, 237);
             height: 100vh;
             overflow: scroll;
             position: fixed;
@@ -230,7 +243,7 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: rgb(35,47,62);
+            background-color: rgb(35, 47, 62);
             text-align: left;
             display: flex;
             justify-content: center;
@@ -278,7 +291,7 @@
         <h2><a href="#">My Account</a></h2>
     </div>
 
-    <div class="content">
+    <div class="theContent">
         <div class="container">
             <div class="side">
                 <div class="theImage"></div>
@@ -388,7 +401,7 @@
         // main content not blocked by footer
         var footerHeight = document.querySelector(".footer").offsetHeight;
 
-        var mainContent = document.querySelector(".content");
+        var mainContent = document.querySelector(".theContent");
         mainContent.style.marginBottom = footerHeight + 10 + "px";
 
         // sticky header
@@ -400,10 +413,23 @@
 
         function contentPadding() {
             var nav = document.querySelector(".theNavbar");
-            var content = document.querySelector(".content");
-
+            var content = document.querySelector(".theContent");
             var navHeight = nav.offsetHeight;
             content.style.paddingTop = navHeight + 15 + "px";
+        }
+        
+        // add scrolled class when scrolled
+        window.onscroll = function() {addScrolledClass()};
+        
+        var nav = document.querySelector(".theNavbar");
+        var navHeight = nav.offsetHeight;
+
+        function addScrolledClass() {
+            if (window.pageYOffset > navHeight) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
         }
 
     </script>
