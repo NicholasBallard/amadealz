@@ -50,6 +50,7 @@
         .theNavbar.scrolled .siteTitle>h1 {
             color: transparent;
             text-shadow: none;
+            opacity: 0;
         }
 
         .theNavContent {
@@ -70,7 +71,7 @@
             padding: 5px;
             border-radius: 1vw;
             text-shadow: 1px 1px 1px grey;
-            transition: color .3s ease-in .1s, text-shadow .3s ease-in .1s;
+            transition: color .8s ease-in .2s, text-shadow .8s ease-in .2s;
         }
 
         .hamburgerMenu {
@@ -355,9 +356,9 @@
     </div> -->
 
     <div class="footer">
-        <p>Another thing.</p>
-        <p>Another thing.</p>
-        <p>Another thing.</p>
+        <p>Stores</p>
+        <p>My Lists</p>
+        <p>More Deals</p>
     </div>
 
 </body>
@@ -401,10 +402,10 @@
             var navHeight = nav.offsetHeight;
             content.style.paddingTop = navHeight + 15 + "px";
         }
-        
+
         // add scrolled class when scrolled
-        window.onscroll = function() {addScrolledClass()};
-        
+        window.onscroll = function () { addScrolledClass() };
+
         var nav = document.querySelector(".theNavbar");
         var navHeight = nav.offsetHeight;
 
@@ -412,14 +413,13 @@
             if (window.pageYOffset > navHeight) {
                 nav.classList.add("scrolled");
                 // change scrolled width
-                nav.style.width = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth/2) + "px";
+                nav.style.width = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth / 2) + "px";
             } else {
                 nav.classList.remove("scrolled");
                 // revert to old navbar width
                 nav.style.width = null;
             }
         }
-
     </script>
 </footer>
 
