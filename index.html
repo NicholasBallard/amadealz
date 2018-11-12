@@ -448,16 +448,17 @@
         }
 
         // add scrolled class when scrolled
-        window.onscroll = function () { addScrolledClass() };
+        window.onscroll = function () { addScrolledClass();};
 
         var nav = document.querySelector(".theNavbar");
         var navHeight = nav.offsetHeight;
+        var newNavWidth = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth / 2) + "px";
 
         function addScrolledClass() {
             if (window.pageYOffset > navHeight) {
                 nav.classList.add("scrolled");
                 // change scrolled width
-                nav.style.width = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth / 2) + "px";
+                nav.style.width = newNavWidth;
             } else {
                 nav.classList.remove("scrolled");
                 // revert to old navbar width
