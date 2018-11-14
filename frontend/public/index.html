@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- #Auth0 -->
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
     <!-- Web Font Loader -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
@@ -233,14 +235,22 @@
 
         .footer {
             position: fixed;
+            height: 150px;
             left: 0;
             bottom: 0;
             width: 100%;
             background-color: rgb(35, 47, 62);
-            text-align: left;
+            /* text-align: left;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; */
+        }
+
+        .footer .button {
+            padding: 2vh 1vw;
+            background-color: blue;
+            height: 50px;
+            width: 50px;
         }
 
         .footer p {
@@ -261,13 +271,14 @@
         } */
 
     </style>
+    <link rel="stylesheet" href="present.css">
 </head>
 
 <body>
 
     <div class="theNavbar">
         <div class="theNavContent">
-            <div class="siteTitle">
+            <div class="siteTitle button-login">
                 <h1 id="titleText">amadealz</h1>
             </div>
             <div class="hamburgerMenu">
@@ -408,10 +419,18 @@
     </div> -->
 
     <div class="footer">
-        <p>Stores</p>
-        <p>My Lists</p>
-        <p>More Deals</p>
+        <div class="button">
+            <div class="present">
+                <div class="bow left"></div>
+                <div class="bow right"></div>
+                <div class="lid"></div>
+                <div class="lid-ribbon"></div>
+                <div class="main-box"></div>
+                <div class="ribbon"></div>
+            </div>
+        </div>
     </div>
+
 
 </body>
 
@@ -474,6 +493,9 @@
             }
         }
     </script>
+
+    <!-- #Auth0 -->
+    <script src="./app.js"></script>
 </footer>
 
 </html>
