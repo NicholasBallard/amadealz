@@ -236,26 +236,39 @@
       }
 
       .footer {
+        /* height: 90px; */
         position: fixed;
-        height: 350px;
         left: 0;
         bottom: 0;
         width: 100%;
         background-color: rgb(35, 47, 62);
         text-align: left;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
+        overflow: auto;
       }
 
-      .footer .footer-container {
+      .footer [class*="footer-container"] {
         /* display: block;
         float: left; */
         background-color: yellow;
-        padding: 10px;
+        padding: 0px;
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-items: center;
         align-items: center;
+        padding: 2vh 1vw;
+        margin: 1vh 3vw;
+      }
+
+      [id*="footer-icon"] {
+        margin: 2vh;
+      }
+
+      [id*="footer-description"] {
+        margin: 2vh;
       }
     </style>
     <link rel="stylesheet" href="present.css" />
@@ -350,8 +363,8 @@
     </div>
 
     <div class="footer">
-      <div class="footer-container">
-        <div class="present">
+      <div class="footer-container-1">
+        <div class="present" id="footer-icon-3">
           <div class="bow left"></div>
           <div class="bow right"></div>
           <div class="lid"></div>
@@ -359,7 +372,29 @@
           <div class="main-box"></div>
           <div class="ribbon"></div>
         </div>
-        <h1>More Dealz</h1>
+        <p id="footer-description-3">Sign In</p>
+      </div>
+      <div class="footer-container-2">
+        <div class="present" id="footer-icon-3">
+          <div class="bow left"></div>
+          <div class="bow right"></div>
+          <div class="lid"></div>
+          <div class="lid-ribbon"></div>
+          <div class="main-box"></div>
+          <div class="ribbon"></div>
+        </div>
+        <p id="footer-description-2">My Lists</p>
+      </div>
+      <div class="footer-container-3">
+        <div class="present" id="footer-icon-3">
+          <div class="bow left"></div>
+          <div class="bow right"></div>
+          <div class="lid"></div>
+          <div class="lid-ribbon"></div>
+          <div class="main-box"></div>
+          <div class="ribbon"></div>
+        </div>
+        <p id="footer-description-3">More Dealz</p>
       </div>
     </div>
   </body>
