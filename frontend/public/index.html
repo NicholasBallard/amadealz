@@ -1,501 +1,439 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, width=device-width, initial-scale=1.0"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- #Auth0 -->
     <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
     <!-- Web Font Loader -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-        WebFont.load({
-            google: {
-                families: ['Signika Negative:700', 'sans-serif']
-            }
-        })
+      WebFont.load({
+        google: {
+          families: ["Signika Negative:700", "sans-serif"]
+        }
+      });
     </script>
     <title>Daily deals on Amazon.com!</title>
     <style>
-        :root {
-            --page-padding: 0 20px 0 20px;
-            --page-margin: 10px;
-            --primary-color: rgb(243, 168, 71);
-            --accent-color: rgb(35, 47, 62);
-        }
+      :root {
+        --page-padding: 0 20px 0 20px;
+        --page-margin: 10px;
+        --primary-color: rgb(243, 168, 71);
+        --accent-color: rgb(35, 47, 62);
+      }
 
-        * {
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      }
 
-        html {
-            overflow-x: hidden;
-        }
+      html {
+        overflow-x: hidden;
+      }
 
-        body {
-            font-family: Helvetica, Arial, sans-serif;
-            margin: 5px;
-            width: 100%;
-        }
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        margin: 5px;
+        width: 100%;
+      }
 
-        .theNavbar {
-            background-color: var(--primary-color);
-            border-radius: 2vh 7vh;
-            color: black;
-            margin: 0 2vw 15px 1vw;
-            mix-blend-mode: multiply;
-            padding: 0 1vw 0 1vw;
-            position: fixed;
-            top: 10px;
-            right: 0;
-            width: 95vw;
-            transition: width .8s cubic-bezier(0.23, 1, 0.320, 1) .2s;
-        }
+      .theNavbar {
+        background-color: var(--primary-color);
+        border-radius: 2vh 7vh;
+        color: black;
+        margin: 0 2vw 15px 1vw;
+        mix-blend-mode: multiply;
+        padding: 0 1vw 0 1vw;
+        position: fixed;
+        top: 10px;
+        right: 0;
+        width: 95vw;
+        transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+      }
 
-        .theNavbar.scrolled .siteTitle>h1 {
-            color: transparent;
-            text-shadow: none;
-            opacity: 0;
-        }
+      .theNavbar.scrolled .siteTitle > h1 {
+        color: transparent;
+        text-shadow: none;
+        opacity: 0;
+      }
 
-        .theNavContent {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap-reverse;
-            justify-content: space-between;
-            max-width: 90vw;
-            margin-left: 5px;
-        }
+      .theNavContent {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+        justify-content: space-between;
+        max-width: 90vw;
+        margin-left: 5px;
+      }
 
-        .siteTitle>h1 {
-            font-family: 'Signika Negative', sans-serif;
-            font-size: 40px;
-            font-weight: 900;
-            line-height: .5;
-            color: white;
-            padding: 5px;
-            border-radius: 1vw;
-            text-shadow: 1px 1px 1px grey;
-            transition: color .8s ease-in .2s, text-shadow .8s ease-in .2s;
-        }
+      .siteTitle > h1 {
+        font-family: "Signika Negative", sans-serif;
+        font-size: 40px;
+        font-weight: 900;
+        line-height: 0.5;
+        color: white;
+        padding: 5px;
+        border-radius: 1vw;
+        text-shadow: 1px 1px 1px grey;
+        transition: color 0.8s ease-in 0.2s, text-shadow 0.8s ease-in 0.2s;
+      }
 
-        .hamburgerMenu {
-            position: fixed;
-            right: 4.5vw;
-        }
+      .hamburgerMenu {
+        position: fixed;
+        right: 4.5vw;
+      }
 
-        .hamburgerMenu div {
-            background-color: var(--accent-color);
-            border-radius: 4px;
-            height: 6px;
-            margin: 4px 0;
-            width: 35px;
-            mix-blend-mode: normal;
-            color: black;
-        }
+      .hamburgerMenu div {
+        background-color: var(--accent-color);
+        border-radius: 4px;
+        height: 6px;
+        margin: 4px 0;
+        width: 35px;
+        mix-blend-mode: normal;
+        color: black;
+      }
 
-        .hamburgerMenu:hover {
-            cursor: pointer;
-            transform: scale(1.2, 1.2);
-        }
+      .hamburgerMenu:hover {
+        cursor: pointer;
+        transform: scale(1.2, 1.2);
+      }
 
-        #theMenu {
-            /* background-color: rgb(191,212,216); */
-            background-color: rgb(234, 237, 237);
-            height: 100vh;
-            overflow: scroll;
-            position: fixed;
-            right: 0;
-            top: 0;
-            transform: translate3d(200vw, 0, 0);
-            transition: transform .3s cubic-bezier(0, .52, 0, 1);
-            width: 100vw;
-            z-index: 1000;
-        }
+      #theMenu {
+        /* background-color: rgb(191,212,216); */
+        background-color: rgb(234, 237, 237);
+        height: 100vh;
+        overflow: scroll;
+        position: fixed;
+        right: 0;
+        top: 0;
+        transform: translate3d(200vw, 0, 0);
+        transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
+        width: 100vw;
+        z-index: 1000;
+      }
 
-        #theMenu.show {
-            transform: translate3d(20vw, 0, 0);
-        }
+      #theMenu.show {
+        transform: translate3d(20vw, 0, 0);
+      }
 
-        #theMenu h2 a {
-            color: SlateGray;
-            text-decoration: none;
-            margin: 0 20px;
-        }
+      #theMenu h2 a {
+        color: SlateGray;
+        text-decoration: none;
+        margin: 0 20px;
+      }
 
-        #theMenu h2 a:hover {
-            text-decoration: underline;
-        }
+      #theMenu h2 a:hover {
+        text-decoration: underline;
+      }
 
-        .container {
-            background-color: lemonchiffon;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin: 5px 2vw 5px 1vw;
-            padding: 10px;
-        }
+      .container {
+        background-color: lemonchiffon;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 5px 2vw 5px 1vw;
+        padding: 10px;
+      }
 
-        .side {
-            flex: 20%;
-            margin: 10px;
-        }
+      .side {
+        flex: 20%;
+        margin: 10px;
+      }
 
-        .theImage {
-            background: gold;
-            height: 100px;
-            margin: 5px 10px 5px 0px;
-            width: 100px;
-        }
+      .theImage {
+        background: gold;
+        height: 100px;
+        margin: 5px 10px 5px 0px;
+        width: 100px;
+      }
 
-        .main {
-            flex: 60%;
-            margin: 10px;
-        }
+      .main {
+        flex: 60%;
+        margin: 10px;
+      }
 
-        .theTitle {
-            background: grey;
-            height: 30px;
-            margin: 3px 2px 10px 0px;
-            width: 300px;
-        }
+      .theTitle {
+        background: grey;
+        height: 30px;
+        margin: 3px 2px 10px 0px;
+        width: 300px;
+      }
 
-        .theBlurb p {
-            background-color: gainsboro;
-            display: inline;
-            font-size: 18px;
-            line-height: 1.4;
-            margin: 3px 2px 2px 0px;
-            padding: 0px;
-            word-wrap: normal;
-        }
+      .theBlurb p {
+        background-color: gainsboro;
+        display: inline;
+        font-size: 18px;
+        line-height: 1.4;
+        margin: 3px 2px 2px 0px;
+        padding: 0px;
+        word-wrap: normal;
+      }
 
-        .theBlurb p::after {
-            content: "I pledge allegiance to the flag, of the United States of America. And to the republic, for which it stands, one nation, under God, indivisible, with liberty and justice for all.";
-        }
+      .theBlurb p::after {
+        content: "I pledge allegiance to the flag, of the United States of America. And to the republic, for which it stands, one nation, under God, indivisible, with liberty and justice for all.";
+      }
 
-        #star-icon {
-            margin: 50px 0;
-            position: relative;
-            display: block;
-            color: red;
-            width: 0px;
-            height: 0px;
-            border-right: 100px solid transparent;
-            border-bottom: 70px solid red;
-            border-left: 100px solid transparent;
-            transform: rotate(35deg);
-        }
+      #star-icon {
+        margin: 50px 0;
+        position: relative;
+        display: block;
+        color: red;
+        width: 0px;
+        height: 0px;
+        border-right: 100px solid transparent;
+        border-bottom: 70px solid red;
+        border-left: 100px solid transparent;
+        transform: rotate(35deg);
+      }
 
-        #star-icon:before {
-            border-bottom: 80px solid red;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-            position: absolute;
-            height: 0;
-            width: 0;
-            top: -45px;
-            left: -65px;
-            display: block;
-            content: '';
-            transform: rotate(-35deg);
-        }
+      #star-icon:before {
+        border-bottom: 80px solid red;
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -45px;
+        left: -65px;
+        display: block;
+        content: "";
+        transform: rotate(-35deg);
+      }
 
-        #star-icon:after {
-            position: absolute;
-            display: block;
-            color: red;
-            top: 3px;
-            left: -105px;
-            width: 0px;
-            height: 0px;
-            border-right: 100px solid transparent;
-            border-bottom: 70px solid red;
-            border-left: 100px solid transparent;
-            transform: rotate(-70deg);
-            content: '';
-        }
+      #star-icon:after {
+        position: absolute;
+        display: block;
+        color: red;
+        top: 3px;
+        left: -105px;
+        width: 0px;
+        height: 0px;
+        border-right: 100px solid transparent;
+        border-bottom: 70px solid red;
+        border-left: 100px solid transparent;
+        transform: rotate(-70deg);
+        content: "";
+      }
 
-        #category-icon {
-            display: flex;
-            align-items: flex-start;
-        }
+      #category-icon {
+        display: flex;
+        align-items: flex-start;
+      }
 
-        #category-icon>div>div {
-            background-color: DarkOrange;
-            width: 10px;
-            height: 10px;
-            margin: 4px 4px 4px 0;
-        }
+      #category-icon > div > div {
+        background-color: DarkOrange;
+        width: 10px;
+        height: 10px;
+        margin: 4px 4px 4px 0;
+      }
 
-        .footer {
-            position: fixed;
-            height: 150px;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: rgb(35, 47, 62);
-            /* text-align: left;
-            display: flex;
-            justify-content: center;
-            align-items: center; */
-        }
+      .footer {
+        position: fixed;
+        height: 350px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(35, 47, 62);
+        text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .footer .button {
-            padding: 2vh 1vw;
-            background-color: blue;
-            height: 50px;
-            width: 50px;
-        }
-
-        .footer p {
-            padding: 2vh 1vw;
-            background-color: lemonchiffon;
-            text-align: center;
-            flex-grow: 1;
-            margin: 10px;
-        }
-
-        /* .footer .container {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin: 5px 2vw 5px 1vw;
-            padding: 10px;
-        } */
-
+      .footer .footer-container {
+        /* display: block;
+        float: left; */
+        background-color: yellow;
+        padding: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
     </style>
-    <link rel="stylesheet" href="present.css">
-</head>
+    <link rel="stylesheet" href="present.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="theNavbar">
-        <div class="theNavContent">
-            <div class="siteTitle button-login">
-                <h1 id="titleText">amadealz</h1>
-            </div>
-            <div class="hamburgerMenu">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+      <div class="theNavContent">
+        <div class="siteTitle button-login">
+          <h1 id="titleText">amadealz</h1>
         </div>
+        <div class="hamburgerMenu">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
 
     <div id="theMenu">
-        <h2><a href="#">Today's Deals</a></h2>
-        <h2><a href="#">Expiring Soon</a></h2>
-        <h2><a href="#">My Account</a></h2>
+      <h2><a href="#">Today's Deals</a></h2>
+      <h2><a href="#">Expiring Soon</a></h2>
+      <h2><a href="#">My Account</a></h2>
     </div>
 
     <div class="theContent">
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
+      </div>
 
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
+      </div>
 
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
-        <div class="container">
-            <div class="side">
-                <div class="theImage"></div>
-            </div>
-            <div class="main">
-                <div class="theTitle"></div>
-                <div class="theBlurb">
-                    <p></p>
-                </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="side"><div class="theImage"></div></div>
+        <div class="main">
+          <div class="theTitle"></div>
+          <div class="theBlurb"><p></p></div>
         </div>
+      </div>
     </div>
-
-
-    <!--   <div id="category-icon">
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div> -->
 
     <div class="footer">
-        <div class="button">
-            <div class="present">
-                <div class="bow left"></div>
-                <div class="bow right"></div>
-                <div class="lid"></div>
-                <div class="lid-ribbon"></div>
-                <div class="main-box"></div>
-                <div class="ribbon"></div>
-            </div>
+      <div class="footer-container">
+        <div class="present">
+          <div class="bow left"></div>
+          <div class="bow right"></div>
+          <div class="lid"></div>
+          <div class="lid-ribbon"></div>
+          <div class="main-box"></div>
+          <div class="ribbon"></div>
         </div>
+        <h1>More Dealz</h1>
+      </div>
     </div>
+  </body>
 
-
-</body>
-
-<footer>
+  <footer>
     <script>
-        // show the menu on clicking the icon
-        var hamburgerButton = document.querySelector(".hamburgerMenu");
-        hamburgerButton.addEventListener("click", showMenu, true);
+      // show the menu on clicking the icon
+      var hamburgerButton = document.querySelector(".hamburgerMenu");
+      hamburgerButton.addEventListener("click", showMenu, true);
 
-        var theMenu = document.querySelector("#theMenu");
-        theMenu.addEventListener("click", hideMenu, false);
+      var theMenu = document.querySelector("#theMenu");
+      theMenu.addEventListener("click", hideMenu, false);
 
-        function showMenu(e) {
-            theMenu.classList.add("show");
-            document.body.style.overflow = "hidden";
-        }
+      function showMenu(e) {
+        theMenu.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
 
-        function hideMenu(e) {
-            theMenu.classList.remove("show");
-            e.stopPropagation();
-            document.body.style.overflow = "auto";
-        }
+      function hideMenu(e) {
+        theMenu.classList.remove("show");
+        e.stopPropagation();
+        document.body.style.overflow = "auto";
+      }
 
-        // main content not blocked by footer
-        var footerHeight = document.querySelector(".footer").offsetHeight;
+      // main content not blocked by footer
+      var footerHeight = document.querySelector(".footer").offsetHeight;
 
-        var mainContent = document.querySelector(".theContent");
-        mainContent.style.marginBottom = footerHeight + 10 + "px";
+      var mainContent = document.querySelector(".theContent");
+      mainContent.style.marginBottom = footerHeight + 10 + "px";
 
-        // sticky header
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", contentPadding, false);
-        } else { // DOMContentLoaded already fired
-            contentPadding();
-        }
+      // sticky header
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", contentPadding, false);
+      } else {
+        // DOMContentLoaded already fired
+        contentPadding();
+      }
 
-        function contentPadding() {
-            var nav = document.querySelector(".theNavbar");
-            var content = document.querySelector(".theContent");
-            var navHeight = nav.offsetHeight;
-            content.style.paddingTop = navHeight + 15 + "px";
-        }
-
-        // add scrolled class when scrolled
-        window.onscroll = function () { addScrolledClass();};
-
+      function contentPadding() {
         var nav = document.querySelector(".theNavbar");
+        var content = document.querySelector(".theContent");
         var navHeight = nav.offsetHeight;
-        
-        function addScrolledClass() {
-            if (window.pageYOffset > navHeight) {
-                nav.classList.add("scrolled");
-                // change scrolled width
-                var newNavWidth = 2 * (nav.offsetLeft + nav.clientWidth - hamburgerButton.offsetLeft - hamburgerButton.clientWidth / 2) + "px";
-                nav.style.width = newNavWidth;
-            } else {
-                nav.classList.remove("scrolled");
-                // revert to old navbar width
-                nav.style.width = null;
-            }
+        content.style.paddingTop = navHeight + 15 + "px";
+      }
+
+      // add scrolled class when scrolled
+      window.onscroll = function() {
+        addScrolledClass();
+      };
+
+      var nav = document.querySelector(".theNavbar");
+      var navHeight = nav.offsetHeight;
+
+      function addScrolledClass() {
+        if (window.pageYOffset > navHeight) {
+          nav.classList.add("scrolled");
+          // change scrolled width
+          var newNavWidth =
+            2 *
+              (nav.offsetLeft +
+                nav.clientWidth -
+                hamburgerButton.offsetLeft -
+                hamburgerButton.clientWidth / 2) +
+            "px";
+          nav.style.width = newNavWidth;
+        } else {
+          nav.classList.remove("scrolled");
+          // revert to old navbar width
+          nav.style.width = null;
         }
+      }
     </script>
 
     <!-- #Auth0 -->
     <script src="./app.js"></script>
-</footer>
-
+  </footer>
 </html>
