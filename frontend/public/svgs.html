@@ -1,24 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="./list.css">
+  <head>
+    <link rel="stylesheet" href="./list.css" />
     <style>
-        body{
-            padding: 30px;
-            display: flex;
-            justify-content: center;
-            background-color: bisque;
+      body {
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        background-color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="list">
+      <svg height="300" width="300">
+        <circle id="bullet-1" fill="black" />
+        <path
+          id="line-1"
+          fill="none"
+          stroke="blue"
+          stroke-width="10"
+          stroke-linejoin="round"
+          z
+        />
+      </svg>
+    </div>
+  </body>
+  <footer>
+    <script>
+      var d = document;
+        var box = d.querySelector(".list");
+        var dims = window.getComputedStyle(box, null);
+      //   console.log(`The box's dims are\n${dims}`);
+      //   var width = dims.width,
+      //     height = dims.height,
+      //     boxX = dims.x,
+      //     boxY = dims.y;
+        var svg = document.querySelector("svg");
+        svg.setAttribute("width", dims.width);
+        svg.setAttribute("height", dims.height);
+
+        document.addEventListener("DOMContentLoaded", addBulletPoint);
+
+        function addBulletPoint() {
+          // add bullet point with SVG and CSS transition
+          var box = document.querySelector(".list");
+          var dims = box.getBoundingClientRect();
+          console.log(`The box's dims are\n${dims}`);
+          var width = dims.width,
+            height = dims.height,
+            boxX = dims.x;
+          boxY = dims.y;
+
+          var bullet1_X = String(boxX + width / 10);
+          console.log(`bullet1_X is ${bullet1_X}`);
+
+          var bullet1_Y = String(boxY + height / 5);
+          console.log(`bullet1_Y is ${bullet1_Y}`);
+
+          var radius = String(Math.round(width / 30));
+          console.log(`radius is ${radius}`);
+
+          var bullet1 = document.querySelector("#bullet-1");
+          bullet1.setAttribute("cx", bullet1_X);
+          bullet1.setAttribute("cy", bullet1_Y);
+          bullet1.setAttribute("r", radius);
         }
 
-    </style>
-</head>
-<body>
-    <div class="list">
-        <svg id="line-1">
-            <path fill="none" stroke="blue" stroke-width="10" stroke-linejoin="round"
-            d="M50,50 110,50 130,60 140,45 155,50 M162,50 170,50 200,30 210,70 215,55 "
-            z />
-        </svg>
-    </div>
-</body>
+      var x = d.querySelector(".list").getAttribute("class")
+      console.log(`The class for the list is \"${x}\"`);
+      
+
+      function getTheCoordinates() {
+        // get starting and ending coordinates for the line
+        var box = document.querySelector(".list");
+        var dims = box.getBoundingClientRect();
+        var width = dims.width,
+          height = dims.height,
+          boxX = dims.x;
+        boxY = dims.y;
+      }
+
+      function createPathAttributeValue() {
+        // make the d="" stuff
+      }
+      function drawSVG() {
+        var line = document.querySelector("#line-1");
+        line.setAttribute(
+          "d",
+          "M50,50 110,10 130,60 140,45 155,50 M162,50 170,50 200,30 210,70 215,55"
+        );
+        console.log(
+          `New path for ${line.id} set.\nThe path is set to:\n${line.d}`
+        );
+      }
+
+    //   drawSVG();
+    </script>
+  </footer>
 </html>
