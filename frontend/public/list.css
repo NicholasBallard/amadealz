@@ -1,8 +1,8 @@
 /* Anchoring div for the icon */
 .list {
     position: relative;
-    width: 5vw;
-    height: 5vw;
-    background-color: lightgray; /* transparent in production */
+    width: 50vh;
+    height: 50vh;
+    background-color: grey; /* transparent in production */
   }
 
