@@ -1,9 +1,9 @@
 /* Anchoring div for the icon */
 .list {
     position: relative;
-    width: 600px;
-    height: 600px;
-    padding: 10px;
+    width: 30vh;
+    height: 30vh;
+    padding: 1vh;
     background-color: grey; /* transparent in production */
   }
 

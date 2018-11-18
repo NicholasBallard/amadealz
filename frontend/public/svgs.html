@@ -13,72 +13,70 @@
   </head>
   <body>
     <div class="list">
-      <svg height="300" width="300">
-        <circle id="bullet-1" fill="black" />
+      <svg>
+        <circle id="bullet-1" fill="black"></circle>
         <path
-          id="line-1"
-          fill="none"
-          stroke="blue"
-          stroke-width="10"
-          stroke-linejoin="round"
-          z
+        id="line-1"
+        fill="none"
+        stroke="blue"
+        stroke-width="10"
+        stroke-linejoin="round"
+        z
         />
+        <circle id="bullet-2" fill="black"></circle>
+        <circle id="bullet-3" fill="black"></circle>
       </svg>
     </div>
   </body>
   <footer>
     <script>
       var d = document;
-        var box = d.querySelector(".list");
-        var dims = window.getComputedStyle(box, null);
-      //   console.log(`The box's dims are\n${dims}`);
-      //   var width = dims.width,
-      //     height = dims.height,
-      //     boxX = dims.x,
-      //     boxY = dims.y;
-        var svg = document.querySelector("svg");
-        svg.setAttribute("width", dims.width);
-        svg.setAttribute("height", dims.height);
+      var box = d.querySelector(".list");
+      var dims = window.getComputedStyle(box, null);
+      var svg = document.querySelector("svg");
+      svg.setAttribute("width", dims.width);
+      svg.setAttribute("height", dims.height);
 
-        document.addEventListener("DOMContentLoaded", addBulletPoint);
+      document.addEventListener("DOMContentLoaded", addBulletPoint);
 
-        function addBulletPoint() {
-          // add bullet point with SVG and CSS transition
-          var box = document.querySelector(".list");
-          var dims = box.getBoundingClientRect();
-          console.log(`The box's dims are\n${dims}`);
-          var width = dims.width,
-            height = dims.height,
-            boxX = dims.x;
-          boxY = dims.y;
+      function addBulletPoint() {
+        // add bullet point with SVG and CSS transition
+        var box = document.querySelector(".list");
+        var dims = box.getBoundingClientRect();
+        console.log(`The box's dims are\n${dims}`);
+        var width = dims.width,
+          height = dims.height;
 
-          var bullet1_X = String(boxX + width / 10);
-          console.log(`bullet1_X is ${bullet1_X}`);
+        var radius = String(Math.round(width / 30));
+        console.log(`radius is ${radius}`);
 
-          var bullet1_Y = String(boxY + height / 5);
-          console.log(`bullet1_Y is ${bullet1_Y}`);
+        var bullet1 = document.querySelector("#bullet-1");
+        bullet1.setAttribute("cx", String(width / 10))
+        bullet1.setAttribute("cy", String(height * 1/4))
+        bullet1.setAttribute("r", radius);
 
-          var radius = String(Math.round(width / 30));
-          console.log(`radius is ${radius}`);
+        var bullet2 = document.querySelector("#bullet-2")
+        bullet2.setAttribute("cx", String(width / 10))
+        bullet2.setAttribute("cy", String(height * 2/4))
+        bullet2.setAttribute("r", radius)
 
-          var bullet1 = document.querySelector("#bullet-1");
-          bullet1.setAttribute("cx", bullet1_X);
-          bullet1.setAttribute("cy", bullet1_Y);
-          bullet1.setAttribute("r", radius);
-        }
+        var bullet3 = document.querySelector("#bullet-3")
+        bullet3.setAttribute("cx", String(width / 10))
+        bullet3.setAttribute("cy", String(height * 3/4))
+        bullet3.setAttribute("r", radius)
+      }
 
-      var x = d.querySelector(".list").getAttribute("class")
+      var x = d.querySelector(".list").getAttribute("class");
       console.log(`The class for the list is \"${x}\"`);
-      
 
       function getTheCoordinates() {
         // get starting and ending coordinates for the line
         var box = document.querySelector(".list");
         var dims = box.getBoundingClientRect();
-        var width = dims.width,
-          height = dims.height,
-          boxX = dims.x;
-        boxY = dims.y;
+        var width = dims.width;
+        var height = dims.height;
+        var boxX = dims.x;
+        var boxY = dims.y;
       }
 
       function createPathAttributeValue() {
@@ -95,7 +93,7 @@
         );
       }
 
-    //   drawSVG();
+      //   drawSVG();
     </script>
   </footer>
 </html>
