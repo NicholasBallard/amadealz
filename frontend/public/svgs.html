@@ -16,15 +16,23 @@
       <svg>
         <circle id="bullet-1" fill="black"></circle>
         <path
-        id="line-1"
-        fill="none"
-        stroke="blue"
-        stroke-width="10"
-        stroke-linejoin="round"
-        z
+          id="line-1"
+          fill="none"
+          stroke="blue"
+          stroke-width="10"
+          stroke-linejoin="round"
+          z
         />
         <circle id="bullet-2" fill="black"></circle>
         <circle id="bullet-3" fill="black"></circle>
+        <path
+          id="line-3"
+          fill="none"
+          stroke="yellow"
+          stroke-width="10"
+          stroke-linejoin="round"
+          z
+        />
       </svg>
     </div>
   </body>
@@ -40,60 +48,76 @@
       document.addEventListener("DOMContentLoaded", addBulletPoint);
 
       function addBulletPoint() {
-        // add bullet point with SVG and CSS transition
-        var box = document.querySelector(".list");
-        var dims = box.getBoundingClientRect();
-        console.log(`The box's dims are\n${dims}`);
-        var width = dims.width,
-          height = dims.height;
+        var dims = getTheCoordinates();
+        var width = dims.width;
+        var height = dims.height;
 
         var radius = String(Math.round(width / 30));
         console.log(`radius is ${radius}`);
 
         var bullet1 = document.querySelector("#bullet-1");
-        bullet1.setAttribute("cx", String(width / 10))
-        bullet1.setAttribute("cy", String(height * 1/4))
+        bullet1.setAttribute("cx", String(width / 10));
+        bullet1.setAttribute("cy", String((height * 1) / 4));
         bullet1.setAttribute("r", radius);
 
-        var bullet2 = document.querySelector("#bullet-2")
-        bullet2.setAttribute("cx", String(width / 10))
-        bullet2.setAttribute("cy", String(height * 2/4))
-        bullet2.setAttribute("r", radius)
+        var bullet2 = document.querySelector("#bullet-2");
+        bullet2.setAttribute("cx", String(width / 10));
+        bullet2.setAttribute("cy", String((height * 2) / 4));
+        bullet2.setAttribute("r", radius);
 
-        var bullet3 = document.querySelector("#bullet-3")
-        bullet3.setAttribute("cx", String(width / 10))
-        bullet3.setAttribute("cy", String(height * 3/4))
-        bullet3.setAttribute("r", radius)
+        var bullet3 = document.querySelector("#bullet-3");
+        bullet3.setAttribute("cx", String(width / 10));
+        bullet3.setAttribute("cy", String((height * 3) / 4));
+        bullet3.setAttribute("r", radius);
       }
-
-      var x = d.querySelector(".list").getAttribute("class");
-      console.log(`The class for the list is \"${x}\"`);
 
       function getTheCoordinates() {
-        // get starting and ending coordinates for the line
+        // get starting and ending coordinates for the SVG object
         var box = document.querySelector(".list");
         var dims = box.getBoundingClientRect();
-        var width = dims.width;
-        var height = dims.height;
-        var boxX = dims.x;
-        var boxY = dims.y;
+
+        return dims;
       }
 
-      function createPathAttributeValue() {
+      function makePathString() {
         // make the d="" stuff
+        // determine coordinate
+        var dims = getTheCoordinates();
+        var originX = Math.trunc(dims.width / 5);
+        var originY = Math.trunc((dims.height * 1) / 4);
+        var yRange = Math.trunc(dims.height / 5);
+        var pathWidth = dims.width * 0.75;
+
+        // return number of words per line between 1 and 4
+        var numWords = Math.floor(Math.random() * 4 + 1);
+        for (let word = 0; word < numWords; word++) {
+          
+        }
+
+        // return a number of random points from 4 to 20
+        var numWordPoints = Math.floor(Math.random() * 16 + 4);
+        var wordPoints = "";
+        for (let point = 0; point < numWordPoints; point++) {
+          let x = Math.trunc(originX + point * (pathWidth / numWordPoints));
+          let y = Math.trunc(originY - Math.floor(Math.random() * yRange) + yRange * .5);
+          wordPoints = wordPoints + " " + x + "," + y + "";
+        }
+        var path = "M" + wordPoints.trim();
+
+        return path;
       }
+
       function drawSVG() {
         var line = document.querySelector("#line-1");
-        line.setAttribute(
-          "d",
-          "M50,50 110,10 130,60 140,45 155,50 M162,50 170,50 200,30 210,70 215,55"
-        );
+        var path = makePathString();
+        console.log(path);
+        line.setAttribute("d", path);
         console.log(
           `New path for ${line.id} set.\nThe path is set to:\n${line.d}`
         );
       }
 
-      //   drawSVG();
+      drawSVG();
     </script>
   </footer>
 </html>

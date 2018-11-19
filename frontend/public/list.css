@@ -1,9 +1,94 @@
 /* Anchoring div for the icon */
 .list {
     position: relative;
-    width: 30vh;
-    height: 30vh;
+    width: 5vw;
+    height: 5vw;
     padding: 1vh;
     background-color: grey; /* transparent in production */
+    display: grid;
+    grid-template-columns: 15% auto;
+    grid-template-rows: 25% 25% 25%;
+    grid-gap: 3%;
+    align-content: center;
   }
 
+.list > .bullet {
+  background-color: blue;
+  border-radius: 100%;
+  justify-self: center;
+  align-self: center;
+  animation-name: drawBullet;
+  animation-fill-mode: both;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes drawBullet {
+  0% {
+    width: 0%;
+    height: 0%;
+    animation-timing-function: ease-out;
+  }
+  50% {
+    width: .5vw;
+    height: .5vw;
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    width: .7vw;
+    height: .7vw;
+  }
+}
+
+.list > #bullet-1 {
+  animation-delay: 3s;
+}
+
+.list > #line-1 {
+  animation-delay: 5.5s;
+}
+
+.list > #bullet-2 {
+  animation-delay: 8s;
+}
+
+.list > #line-2 {
+  animation-delay: 10.3s;
+}
+
+.list > #bullet-3 {
+  animation-delay: 13s;
+}
+
+.list > #line-3 {
+  animation-delay: 16s;
+}
+
+
+.list > .line {
+  background-color: lightblue;
+  /* border-radius: 50%; */
+  margin: 10% 0 10% 5%;
+  animation-name: drawLine;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes drawLine {
+  from {
+    width: 0%;
+    animation-timing-function: ease-in;
+  }
+  30% {
+    width: 25%;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  60% {
+    width: 70%;
+    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  to {
+    width: 90%;
+  }
+}

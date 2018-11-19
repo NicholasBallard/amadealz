@@ -1,0 +1,73 @@
+/* Anchoring div for the icon */
+.categories {
+  position: relative;
+  width: 5vw;
+  height: 5vw;
+  padding: 1vh;
+  background-color: grey; /* transparent in production */
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% 15%;
+  /* grid-template-rows: ; */
+  grid-column-gap: 3%;
+  justify-content: center;
+}
+
+.categories > #column-1 {
+  background-color: blue;
+  animation: cascade 10s infinite, fade 10s infinite;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+}
+
+.categories > #column-2 {
+  background-color: green;
+  animation: cascade 10s infinite, fade 10s infinite;
+  animation-delay: 4s;
+  animation-fill-mode: both;
+}
+
+.categories > #column-3 {
+  background-color: red;
+  animation: cascade 10s infinite, fade 10s infinite;
+  animation-delay: 6s;
+  animation-fill-mode: both;
+}
+
+.categories > #column-4 {
+  background-color: yellow;
+  animation: cascade 10s infinite, fade 10s infinite;
+  animation-delay: 8s;
+  animation-fill-mode: both;
+}
+
+.categories > #column-5 {
+  background-color: pink;
+  animation: cascade 10s infinite, fade 10s infinite;
+  animation-delay: 10s;
+  animation-fill-mode: both;
+}
+
+@keyframes cascade {
+  from {
+    height: 0;
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  20% {
+    height: 100%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
