@@ -4,12 +4,16 @@
   width: 5vw;
   height: 5vw;
   padding: 1vh;
-  background-color: grey; /* transparent in production */
+  background-color: transparent; /* transparent in production */
   display: grid;
   grid-template-columns: 15% 15% 15% 15% 15%;
   /* grid-template-rows: ; */
   grid-column-gap: 3%;
   justify-content: center;
+}
+
+.categories > .column {
+    border-radius: 10%;
 }
 
 .categories > #column-1 {
@@ -62,10 +66,10 @@
 
 @keyframes fade {
   from {
-    opacity: 1;
+    opacity: .7;
   }
   50% {
-    opacity: 1;
+    opacity: .7;
   }
   to {
     opacity: 0;

@@ -4,7 +4,7 @@
     width: 5vw;
     height: 5vw;
     padding: 1vh;
-    background-color: grey; /* transparent in production */
+    background-color: transparent; /* transparent in production */
     display: grid;
     grid-template-columns: 15% auto;
     grid-template-rows: 25% 25% 25%;
@@ -42,32 +42,37 @@
 
 .list > #bullet-1 {
   animation-delay: 3s;
+  background-color: lightgray;
 }
 
 .list > #line-1 {
   animation-delay: 5.5s;
+  background-color: lightgray;
 }
 
 .list > #bullet-2 {
   animation-delay: 8s;
+  background-color: darkslategray;
 }
 
 .list > #line-2 {
   animation-delay: 10.3s;
+  background-color: darkslategray;
 }
 
 .list > #bullet-3 {
   animation-delay: 13s;
+  background-color: rgb(15, 15, 15);
 }
 
 .list > #line-3 {
   animation-delay: 16s;
+  background-color: rgb(15, 15, 15);
 }
 
 
 .list > .line {
-  background-color: lightblue;
-  /* border-radius: 50%; */
+  border-radius: 25%;
   margin: 10% 0 10% 5%;
   animation-name: drawLine;
   animation-duration: 4s;

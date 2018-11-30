@@ -3,7 +3,7 @@
   position: relative;
   width: 5vw;
   height: 5vw;
-  background-color: lightgray; /* transparent in production */
+  background-color: transparent; /* transparent in production */
 }
 
 .bow.left {
