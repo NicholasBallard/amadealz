@@ -1,8 +1,8 @@
 /* Anchoring div for the icon */
 .present {
   position: relative;
-  width: 5vw;
-  height: 5vw;
+  width: 3vw;
+  height: 3vw;
   background-color: transparent; /* transparent in production */
 }
 

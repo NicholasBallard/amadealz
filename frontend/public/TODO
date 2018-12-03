@@ -1,0 +1,1 @@
+Fade in the whole site, delaying first paint. Less jarring after calculating positions. Currently paints and then has a juttering as the elements resize. Look at the site title amadealz.

@@ -78,8 +78,8 @@ body {
   animation-name: wiggle;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-delay: -.2s;
-  animation-duration: .5s;
+  animation-delay: 10s;
+  animation-duration: 2s;
   transform-origin: 50% 10%;
 }
 
@@ -174,48 +174,6 @@ body {
   content: "I pledge allegiance to the flag, of the United States of America. And to the republic, for which it stands, one nation, under God, indivisible, with liberty and justice for all.";
 }
 
-#star-icon {
-  margin: 50px 0;
-  position: relative;
-  display: block;
-  color: red;
-  width: 0px;
-  height: 0px;
-  border-right: 100px solid transparent;
-  border-bottom: 70px solid red;
-  border-left: 100px solid transparent;
-  transform: rotate(35deg);
-}
-
-#star-icon:before {
-  border-bottom: 80px solid red;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  position: absolute;
-  height: 0;
-  width: 0;
-  top: -45px;
-  left: -65px;
-  display: block;
-  content: "";
-  transform: rotate(-35deg);
-}
-
-#star-icon:after {
-  position: absolute;
-  display: block;
-  color: red;
-  top: 3px;
-  left: -105px;
-  width: 0px;
-  height: 0px;
-  border-right: 100px solid transparent;
-  border-bottom: 70px solid red;
-  border-left: 100px solid transparent;
-  transform: rotate(-70deg);
-  content: "";
-}
-
 #category-icon {
   display: flex;
   align-items: flex-start;
@@ -233,7 +191,9 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-image: linear-gradient(to bottom, white, rgb(218, 218, 224));
+  height: 100px;
+  /* background-color: black; */
+  background-image: linear-gradient(to bottom, white, rgb(171, 165, 196), var(--accent-color));
   text-align: left;
   display: flex;
   justify-content: space-around;
@@ -266,7 +226,7 @@ body {
 }
 
 [id*="footer-icon"] {
-  margin: 1vh;
+  margin: .5vh;
 }
 
 [id*="footer-description"] {
